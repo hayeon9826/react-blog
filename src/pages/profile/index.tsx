@@ -1,3 +1,15 @@
+import PostList from "components/PostList";
+import Header from "components/Header";
+import Footer from "components/Footer";
+import Profile from "components/Profile";
+
 export default function ProfilePage() {
-  return <h2>Profile Page</h2>;
+  return (
+    <>
+      <Header />
+      <Profile />
+      <PostList hasNavigation={false} />
+      <Footer />
+    </>
+  );
 }
