@@ -41,21 +41,94 @@ header input:focus {
   outline: none;
 }
 
-header a:hover,
-header a:focus {
+a {
+  text-decoration: none;
   color: black;
 }
 
-header a {
-  margin: 0px 10px;
+header a:hover,
+header a:focus,
+footer a:hover,
+footer a:focus {
+  color: black;
+}
+
+header a,
+footer a {
+  margin: 0px 8px;
   text-decoration: none;
   color: gray;
 }
 
-.Post-list {
+.Post__navigation {
+  display: flex;
+  gap: 12px;
+  margin: 0 auto;
+  max-width: 680px;
+  font-size: 16px;
+  color: gray;
+  cursor: pointer;
+  padding: 48px 20px 0px 20px;
+}
+
+.Post__navigation-active {
+  color: black;
+  font-weight: 600;
+}
+
+.Post__list {
   text-align: center;
   min-height: 90vh;
-  padding: 20px 40px;
+  padding: 20px;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 24px;
+}
+
+.Post__profile-box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.Post__utils-box {
+  display: flex;
+  gap: 8px;
+  flex-direction: row-reverse;
+  font-size: 14px;
+}
+
+.Post__delete,
+.Post__edit {
+  color: gray;
+}
+
+.Post__date {
+  color: gray;
+}
+
+.Post__profile {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+}
+
+.Post__box {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-top: 1px solid #f2f2f2;
+}
+
+.Post__title {
+  font-size: 20px;
+}
+
+.Post__text {
+  font-size: 16px;
+  color: #292929;
 }
 
 footer {
@@ -67,5 +140,6 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
+  margin-top: 48px;
 }
