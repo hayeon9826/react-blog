@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { AiFillHeart } from "react-icons/ai";
@@ -6,13 +7,20 @@ interface PostListProps {
   hasNavigation?: boolean;
 }
 
+type TabType = "all" | "my";
+
 export default function PostList({ hasNavigation = true }: PostListProps) {
+  const [activeTab, setActiveTab] = useState<TabType>("all");
   return (
     <>
       {hasNavigation && (
         <div className="Post__navigation">
-          <div className="Post__navigation-active">추천</div>
-          <div>팔로잉</div>
+          <div role="presentation" onClick={() => setActiveTab("all")} className={activeTab === "all" ? "Post__navigation-active" : ""}>
+            전체
+          </div>
+          <div role="presentation" onClick={() => setActiveTab("my")} className={activeTab === "my" ? "Post__navigation-active" : ""}>
+            내가쓴 글
+          </div>
         </div>
       )}
       <div className="Post__list">
@@ -30,7 +38,9 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
               </div>
               <div className="Post__utils-box">
                 <div className="Post__delete">삭제</div>
-                <div className="Post__edit">수정</div>
+                <div className="Post__edit">
+                  <Link to={`/posts/edit/1`}>수정</Link>
+                </div>
                 <div className="Post__save">
                   <AiFillHeart />
                 </div>

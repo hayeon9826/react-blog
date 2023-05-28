@@ -1,4 +1,5 @@
 import { AiFillHeart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export default function PostDetail() {
   return (
@@ -12,8 +13,10 @@ export default function PostDetail() {
             <div className="Post__date">Apr 12</div>
           </div>
           <div className="Post__utils-box">
+            <div className="Post__edit">
+              <Link to={`/posts/edit/1`}>수정</Link>
+            </div>
             <div className="Post__delete">삭제</div>
-            <div className="Post__edit">수정</div>
             <div className="Post__save">
               <AiFillHeart />
             </div>

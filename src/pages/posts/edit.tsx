@@ -1,3 +1,11 @@
+import Header from "components/Header";
+import PostForm from "components/PostForm";
+
 export default function PostEdit() {
-  return <h2>Post edit Page</h2>;
+  return (
+    <>
+      <Header hasSearch={false} />
+      <PostForm />
+    </>
+  );
 }

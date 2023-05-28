@@ -45,6 +45,11 @@ header input:focus {
 
 a {
   text-decoration: none;
+  color: gray;
+}
+
+a:hover,
+a:focus {
   color: black;
 }
 
@@ -207,6 +212,7 @@ footer div {
 
 .Post__title {
   font-size: 20px;
+  color: black;
 }
 
 .Post__detail .Post__title {
@@ -218,11 +224,11 @@ footer div {
   flex-direction: row;
   border-bottom: 1px solid #f2f2f2;
   border-top: 1px solid #f2f2f2;
-  padding: 10px 0px;
+  padding: 10px 10px;
 }
 
 .Post__detail .Post__profile-box {
-  padding: 10px 0px;
+  padding: 10px 10px;
 }
 
 .Post__text {
@@ -358,4 +364,64 @@ input#img-3:checked ~ .Carousel__dots label#img-dot-3 {
 
 input:checked + .Carousel__slide-container .nav label {
   display: block;
+}
+
+/* form */
+.Form {
+  margin: 0 auto;
+  max-width: 680px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.Form input {
+  height: 20px;
+  padding: 10px 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+  border: 1px solid lightgray;
+  width: 96%;
+  max-width: 680px;
+}
+
+.Form textarea {
+  min-height: 400px;
+  padding: 10px 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+  border: 1px solid lightgray;
+  width: 96%;
+  max-width: 680px;
+}
+
+.Form .Form__block {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.Form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.Form .Form__btn-submit {
+  width: 100%;
+  height: 48px;
+  padding: 10px 10px;
+  float: right;
+  cursor: pointer;
+  font-weight: 500;
+  margin: 0 auto;
+  font-size: 16px;
+  background-color: #2563eb;
+  color: white;
+}
+
+.Form .Form__btn-submit:hover,
+.Form .Form__btn-submit:focus {
+  background-color: #1945a4;
 }
