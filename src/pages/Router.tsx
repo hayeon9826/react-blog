@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Home from "./home";
 import PostList from "./posts";
 import PostDetail from "./posts/detail";
@@ -10,9 +8,11 @@ import ProfilePage from "./profile";
 import LoginPage from "./login";
 import SignupPage from "./signup";
 
-export default function Router() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+interface RouterProps {
+  isAuthenticated: boolean;
+}
 
+export default function Router({ isAuthenticated }: RouterProps) {
   return (
     <Routes>
       {isAuthenticated ? (
