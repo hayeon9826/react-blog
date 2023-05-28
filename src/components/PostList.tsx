@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { db } from "firebaseApp";
 import { collection, getDocs } from "firebase/firestore";
+import AuthContext from "context/AuthContext";
 
 import { AiFillHeart } from "react-icons/ai";
 
@@ -16,6 +17,7 @@ interface PostProps {
   summary: string;
   content: string;
   createdAt: string;
+  uid: string;
 }
 
 type TabType = "all" | "my";
@@ -23,6 +25,7 @@ type TabType = "all" | "my";
 export default function PostList({ hasNavigation = true }: PostListProps) {
   const [activeTab, setActiveTab] = useState<TabType>("all");
   const [posts, setPosts] = useState<PostProps[]>([]);
+  const { user } = useContext(AuthContext);
 
   const getPosts = async () => {
     const datas = await getDocs(collection(db, "posts"));
@@ -63,13 +66,17 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
                 <div className="Post__text">{post?.summary}</div>
               </Link>
               <div className="Post__utils-box">
-                <div className="Post__delete">삭제</div>
-                <div className="Post__edit">
-                  <Link to={`/posts/edit/${post?.id}`}>수정</Link>
-                </div>
-                <div className="Post__save">
+                {user?.uid === post?.uid && (
+                  <>
+                    <div className="Post__delete">삭제</div>
+                    <div className="Post__edit">
+                      <Link to={`/posts/edit/${post?.id}`}>수정</Link>
+                    </div>
+                  </>
+                )}
+                {/* <div className="Post__save">
                   <AiFillHeart />
-                </div>
+                </div> */}
               </div>
             </div>
           ))

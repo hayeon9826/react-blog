@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { app } from "firebaseApp";
 import { useNavigate } from "react-router-dom";
@@ -6,12 +6,14 @@ import { getAuth } from "firebase/auth";
 import { db } from "firebaseApp";
 import { toast } from "react-toastify";
 import { collection, addDoc } from "firebase/firestore";
+import AuthContext from "context/AuthContext";
 
 export default function PostForm() {
   const [title, setTitle] = useState<string>("");
   const [summary, setSummary] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const auth = getAuth(app);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = async (e: any) => {
@@ -24,6 +26,7 @@ export default function PostForm() {
         content: content,
         createdAt: new Date()?.toLocaleDateString(),
         email: auth?.currentUser?.email,
+        uid: user?.uid,
       });
       navigate("/");
       toast.success("게시글을 생성했습니다.");
