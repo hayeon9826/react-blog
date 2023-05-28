@@ -1,7 +1,12 @@
+import { useContext } from "react";
+
 import { Link } from "react-router-dom";
-import { BsFillMoonFill } from "react-icons/bs";
+import { BsMoon, BsSun } from "react-icons/bs";
+import ThemeContext from "context/ThemeContext";
 
 export default function Footer() {
+  const context = useContext(ThemeContext);
+
   return (
     <footer>
       <div>
@@ -10,7 +15,11 @@ export default function Footer() {
         <Link to="/profile">프로필</Link>
       </div>
       <div>
-        <BsFillMoonFill />
+        {context.theme === "light" ? (
+          <BsSun onClick={context.toggleMode} className="Footer__theme-btn" />
+        ) : (
+          <BsMoon onClick={context.toggleMode} className="Footer__theme-btn" />
+        )}
       </div>
     </footer>
   );

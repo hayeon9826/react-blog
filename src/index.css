@@ -86,6 +86,11 @@ footer div {
   cursor: pointer;
 }
 
+.Footer__theme-btn {
+  width: 18px;
+  height: 18px;
+}
+
 /* post list */
 
 .Post__navigation {
@@ -386,6 +391,7 @@ input:checked + .Carousel__slide-container .nav label {
   max-width: 680px;
   padding: 20px;
   margin-top: 20px;
+  min-height: 100vh;
 }
 
 .Form input {
@@ -433,6 +439,7 @@ input:checked + .Carousel__slide-container .nav label {
   font-size: 16px;
   background-color: #2563eb;
   color: white;
+  border: none;
 }
 
 .Form .Form__btn-submit:hover,
@@ -504,4 +511,57 @@ input:checked + .Carousel__slide-container .nav label {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* dark mode */
+.White {
+  transition: all 0.25s linear;
+  background-color: white;
+}
+
+.Dark {
+  transition: all 0.25s linear;
+  background-color: #1e2937;
+}
+
+.Dark a,
+.Dark .Form label,
+.Dark .Post__delete,
+.Dark .Profile__logout,
+.Dark .Form__title {
+  color: white;
+}
+
+.Dark a:hover,
+.Dark a:focus {
+  color: lightgray;
+}
+
+.Dark .Post__navigation-active,
+.Dark .Post__title,
+.Dark .Post__author-name,
+.Dark .Footer__theme-btn,
+.Dark .Profile__name {
+  color: white;
+}
+
+.Dark .Post__text,
+.Dark .Post__text--pre-wrap,
+.Dark .Profile__email,
+.Dark .Post__date,
+.Dark .Form__block {
+  color: lightgray;
+}
+
+.Dark .Form__error {
+  color: #ff6a71;
+}
+
+.Dark footer,
+.Dark header {
+  background-color: #111827;
+}
+
+.Dark .Profile__box {
+  background-color: lightslategray;
 }

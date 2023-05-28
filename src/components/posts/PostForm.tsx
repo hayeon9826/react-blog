@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { collection, addDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import AuthContext from "context/AuthContext";
 import { PostProps } from "./PostList";
+import Loader from "components/Loader";
 
 export default function PostForm() {
   const params = useParams();
@@ -90,7 +91,7 @@ export default function PostForm() {
     }
   }, [post]);
 
-  return (
+  return (post && user?.uid === post.uid) || (!post && user) ? (
     <form onSubmit={onSubmit} className="Form">
       <div className="Form__block">
         <label htmlFor="title">제목</label>
@@ -108,5 +109,7 @@ export default function PostForm() {
         <input type="submit" value={post ? "수정" : "제출"} className="Form__btn-submit" />
       </div>
     </form>
+  ) : (
+    <Loader />
   );
 }

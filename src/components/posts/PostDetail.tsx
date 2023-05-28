@@ -2,9 +2,8 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { doc, getDoc, deleteDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
-import { AiFillHeart } from "react-icons/ai";
 import { db } from "firebaseApp";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { PostProps } from "./PostList";
 import Loader from "components/Loader";
 import AuthContext from "context/AuthContext";
@@ -13,11 +12,13 @@ export default function PostDetail() {
   const params = useParams();
   const [post, setPost] = useState<PostProps | null>(null);
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleDelete = async () => {
     const confirm = window.confirm("해당 게시글을 삭제하시겠습니까?");
     if (confirm && post) {
       await deleteDoc(doc(db, "posts", post.id));
+      navigate("/");
       toast.success("게시글을 삭제했습니다.");
     }
   };

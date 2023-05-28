@@ -90,7 +90,7 @@ export default function SignupForm() {
         </Link>
       </div>
       <div className="Form__block--lg">
-        <input type="submit" value="로그인" className="Form__btn-submit" disabled={error?.length > 0} />
+        <input type="submit" value="회원가입" className="Form__btn-submit" disabled={error?.length > 0} />
       </div>
     </form>
   );
