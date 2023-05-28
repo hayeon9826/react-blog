@@ -30,7 +30,7 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
   // const getPosts = async () => {
   //   const datas = await getDocs(collection(db, "posts"));
   //   datas?.forEach((doc) => {
-  //     const dataObj = { ...doc.data(), id: doc.id };
+  //     const dataObj = { ...dofc.data(), id: doc.id };
   //     setPosts((prev) => [dataObj as PostProps, ...prev]);
   //   });
   // };
