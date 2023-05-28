@@ -453,3 +453,13 @@ input:checked + .Carousel__slide-container .nav label {
 .Form__link:focus {
   color: #1945a4;
 }
+
+.Form__error {
+  color: #a30000;
+}
+
+.Form input:disabled,
+.Form input:disabled:hover,
+.Form input:disabled:focus {
+  background-color: lightgray;
+}

@@ -10,12 +10,13 @@ import SignupPage from "./signup";
 
 interface RouterProps {
   isAuthenticated: boolean;
+  init: boolean;
 }
 
-export default function Router({ isAuthenticated }: RouterProps) {
+export default function Router({ isAuthenticated, init }: RouterProps) {
   return (
     <Routes>
-      {isAuthenticated ? (
+      {isAuthenticated || init ? (
         <>
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<PostList />} />
@@ -23,8 +24,8 @@ export default function Router({ isAuthenticated }: RouterProps) {
           <Route path="/posts/new" element={<PostNew />} />
           <Route path="/posts/edit/:id" element={<PostEdit />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<Home />} />
+          <Route path="/signup" element={<Home />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </>
       ) : (
