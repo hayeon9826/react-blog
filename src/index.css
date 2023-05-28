@@ -425,3 +425,31 @@ input:checked + .Carousel__slide-container .nav label {
 .Form .Form__btn-submit:focus {
   background-color: #1945a4;
 }
+
+/* login form */
+
+.Form--lg {
+  min-height: 70vh;
+  margin-top: 10vh;
+}
+
+.Form .Form__block--lg {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.Form__title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.Form__link {
+  margin-left: 10px;
+  text-decoration: underline;
+  color: #2563eb;
+}
+
+.Form__link:hover,
+.Form__link:focus {
+  color: #1945a4;
+}
