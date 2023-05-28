@@ -32,20 +32,21 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
                 <div className="Post__author-name">Adarsh Dayanand</div>
                 <div className="Post__date">Apr 12</div>
               </div>
+
               <h1 className="Post__title">Microservices Architecture with Node.js: Building Scalable and Robust Applications</h1>
               <div className="Post__text">
                 Microservices architecture has gained popularity in recent years as a modern approach to building large-scale, complex applications. …
               </div>
-              <div className="Post__utils-box">
-                <div className="Post__delete">삭제</div>
-                <div className="Post__edit">
-                  <Link to={`/posts/edit/1`}>수정</Link>
-                </div>
-                <div className="Post__save">
-                  <AiFillHeart />
-                </div>
-              </div>
             </Link>
+            <div className="Post__utils-box">
+              <div className="Post__delete">삭제</div>
+              <div className="Post__edit">
+                <Link to={`/posts/edit/1`}>수정</Link>
+              </div>
+              <div className="Post__save">
+                <AiFillHeart />
+              </div>
+            </div>
           </div>
         ))}
       </div>

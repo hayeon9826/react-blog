@@ -7,7 +7,7 @@ export default function Carousel() {
     <div>
       <div className="Carousel">
         <ul className="Carousel__slides">
-          <input type="radio" name="radio-buttons" id="img-1" checked={activeImage === 1} />
+          <input type="radio" name="radio-buttons" id="img-1" checked={activeImage === 1} readOnly />
           <li className="Carousel__slide-container">
             <div className="Carousel__slide-img">
               <img
@@ -24,7 +24,7 @@ export default function Carousel() {
               </label>
             </div>
           </li>
-          <input type="radio" name="radio-buttons" id="img-2" checked={activeImage === 2} />
+          <input type="radio" name="radio-buttons" id="img-2" checked={activeImage === 2} readOnly />
           <li className="Carousel__slide-container">
             <div className="Carousel__slide-img">
               <img
@@ -41,7 +41,7 @@ export default function Carousel() {
               </label>
             </div>
           </li>
-          <input type="radio" name="radio-buttons" id="img-3" checked={activeImage === 3} />
+          <input type="radio" name="radio-buttons" id="img-3" checked={activeImage === 3} readOnly />
           <li className="Carousel__slide-container">
             <div className="Carousel__slide-img">
               <img
