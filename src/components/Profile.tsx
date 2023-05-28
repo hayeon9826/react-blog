@@ -18,7 +18,6 @@ export default function Profile() {
         onClick={async () => {
           const auth = getAuth(app);
           await signOut(auth);
-          console.log(auth);
           toast.success("로그아웃 되었습니다.");
         }}
       >

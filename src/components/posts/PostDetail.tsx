@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { doc, getDoc, deleteDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
@@ -7,10 +7,12 @@ import { db } from "firebaseApp";
 import { Link, useParams } from "react-router-dom";
 import { PostProps } from "./PostList";
 import Loader from "components/Loader";
+import AuthContext from "context/AuthContext";
 
 export default function PostDetail() {
   const params = useParams();
   const [post, setPost] = useState<PostProps | null>(null);
+  const { user } = useContext(AuthContext);
 
   const handleDelete = async () => {
     const confirm = window.confirm("해당 게시글을 삭제하시겠습니까?");
@@ -43,17 +45,20 @@ export default function PostDetail() {
               <div className="Post__author-name">{post?.email}</div>
               <div className="Post__date">{post?.createdAt}</div>
             </div>
-            <div className="Post__utils-box">
-              <div className="Post__edit">
-                <Link to={`/posts/edit/${post?.id}`}>수정</Link>
+            {user?.uid === post?.uid && (
+              <div className="Post__utils-box">
+                <div className="Post__edit">
+                  <Link to={`/posts/edit/${post?.id}`}>수정</Link>
+                </div>
+                <div onClick={handleDelete} role="presentation" className="Post__delete">
+                  삭제
+                </div>
+                {/* <div className="Post__save">
+                  <AiFillHeart />
+                </div> */}
               </div>
-              <div onClick={handleDelete} role="presentation" className="Post__delete">
-                삭제
-              </div>
-              <div className="Post__save">
-                <AiFillHeart />
-              </div>
-            </div>
+            )}
+
             <br />
             <div className="Post__text--pre-wrap">{post?.content}</div>
           </div>

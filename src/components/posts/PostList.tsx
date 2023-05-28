@@ -1,13 +1,15 @@
 import { useState, useEffect, useContext } from "react";
 
 import { db } from "firebaseApp";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import AuthContext from "context/AuthContext";
 
 import PostBox from "./PostBox";
 
+type TabType = "all" | "my";
 interface PostListProps {
   hasNavigation?: boolean;
+  tabType?: TabType;
 }
 
 export interface PostProps {
@@ -20,10 +22,8 @@ export interface PostProps {
   uid: string;
 }
 
-type TabType = "all" | "my";
-
-export default function PostList({ hasNavigation = true }: PostListProps) {
-  const [activeTab, setActiveTab] = useState<TabType>("all");
+export default function PostList({ hasNavigation = true, tabType = "all" }: PostListProps) {
+  const [activeTab, setActiveTab] = useState<TabType>(tabType);
   const [posts, setPosts] = useState<PostProps[]>([]);
   const { user } = useContext(AuthContext);
 
@@ -37,16 +37,23 @@ export default function PostList({ hasNavigation = true }: PostListProps) {
 
   useEffect(() => {
     // getPosts();
-    let postsRef = collection(db, "posts");
-    let postsQuery = query(postsRef, orderBy("createdAt", "desc"));
-    onSnapshot(postsQuery, (snapShot) => {
-      let dataObj = snapShot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setPosts(dataObj as PostProps[]);
-    });
-  }, []);
+    if (user && activeTab) {
+      let postsRef = collection(db, "posts");
+      let postsQuery;
+      if (activeTab === "my") {
+        postsQuery = query(postsRef, where("uid", "==", user.uid), orderBy("createdAt", "desc"));
+      } else {
+        postsQuery = query(postsRef, orderBy("createdAt", "desc"));
+      }
+      onSnapshot(postsQuery, (snapShot) => {
+        let dataObj = snapShot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setPosts(dataObj as PostProps[]);
+      });
+    }
+  }, [activeTab, user]);
 
   return (
     <>
