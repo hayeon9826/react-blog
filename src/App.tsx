@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
 import Router from "./pages/Router";
+import Loader from "components/Loader";
 
 function App() {
   const auth = getAuth(app);
@@ -18,14 +19,14 @@ function App() {
       } else {
         setIsAuthenticated(false);
       }
+      setInit(true);
     });
-    setInit(true);
   }, [auth]);
 
   return (
     <>
       <ToastContainer position="top-right" autoClose={1000} hideProgressBar newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-      <Router isAuthenticated={isAuthenticated} init={init} />;
+      {init ? <Router isAuthenticated={isAuthenticated} /> : <Loader />}
     </>
   );
 }

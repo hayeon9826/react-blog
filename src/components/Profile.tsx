@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { app } from "firebaseApp";
+import { toast } from "react-toastify";
+import { getAuth, signOut } from "firebase/auth";
 
 export default function Profile() {
   return (
@@ -10,9 +12,18 @@ export default function Profile() {
           <div className="Profile__name">김아무개</div>
         </div>
       </div>
-      <Link to="/" className="Profile__logout">
+      <div
+        role="presentation"
+        className="Profile__logout"
+        onClick={async () => {
+          const auth = getAuth(app);
+          await signOut(auth);
+          console.log(auth);
+          toast.success("로그아웃 되었습니다.");
+        }}
+      >
         로그아웃
-      </Link>
+      </div>
     </div>
   );
 }

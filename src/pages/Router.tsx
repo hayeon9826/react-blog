@@ -10,13 +10,12 @@ import SignupPage from "./signup";
 
 interface RouterProps {
   isAuthenticated: boolean;
-  init: boolean;
 }
 
-export default function Router({ isAuthenticated, init }: RouterProps) {
+export default function Router({ isAuthenticated }: RouterProps) {
   return (
     <Routes>
-      {isAuthenticated || init ? (
+      {isAuthenticated ? (
         <>
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<PostList />} />

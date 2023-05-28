@@ -178,6 +178,7 @@ footer div {
   color: gray;
   font-size: 14px;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .Flex__box-lg {
@@ -462,4 +463,32 @@ input:checked + .Carousel__slide-container .nav label {
 .Form input:disabled:hover,
 .Form input:disabled:focus {
   background-color: lightgray;
+}
+
+/* loader */
+.Loader {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 5px solid #2563eb;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  z-index: 9999;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
