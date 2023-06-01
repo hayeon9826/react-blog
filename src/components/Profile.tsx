@@ -12,7 +12,7 @@ export default function Profile() {
         <div className="Profile__image" />
         <div>
           <div className="Profile__email">{user?.email}</div>
-          <div className="Profile__name">반갑습니다 사용자님!</div>
+          <div className="Profile__name">반갑습니다 {user?.displayName || "사용자"}님!</div>
         </div>
       </div>
       <div
